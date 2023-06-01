@@ -1,0 +1,56 @@
+package com.stage.gestiondestock_backend.Dto;
+
+import com.stage.gestiondestock_backend.model.MvtStock;
+import com.stage.gestiondestock_backend.model.enumeration.TypeMvtStk;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.time.Instant;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class MvtStockDto {
+
+    private Long id;
+
+    private Instant dateMvt;
+
+    private BigDecimal quantite;
+
+    private Integer idEntreprise;
+
+    private  ArticleDto article;
+
+    private TypeMvtStk typeMvtStk;
+
+    public static MvtStockDto fromEntity(MvtStock mvtStock) {
+        if(mvtStock==null){
+            return null;
+        }
+
+        return MvtStockDto.builder()
+                .id(mvtStock.getId())
+                .dateMvt(mvtStock.getDateMvt())
+                .quantite(mvtStock.getQuantite())
+                .article(ArticleDto.fromEntity(mvtStock.getArticle()))
+                .typeMvtStk(mvtStock.getTypeMvtStk())
+                .build();
+    }
+
+    public static MvtStock toEntity(MvtStockDto dto){
+        if(dto == null){
+            return null;
+        }
+        MvtStock mvtStock = new MvtStock();
+        mvtStock.setId(dto.getId());
+        mvtStock.setArticle((ArticleDto.toEntity(dto.getArticle())));
+        mvtStock.setDateMvt(dto.getDateMvt());
+        mvtStock.setIdEntreprise(dto.getIdEntreprise());
+        mvtStock.setQuantite(dto.getQuantite());
+        return mvtStock;
+    }
+
+}
