@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.RolesDto;
-import com.stage.gestiondestock_backend.controller.Api.RolesApi;
+import com.stage.gestiondestock_backend.controller.api.RolesApi;
 import com.stage.gestiondestock_backend.service.RolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

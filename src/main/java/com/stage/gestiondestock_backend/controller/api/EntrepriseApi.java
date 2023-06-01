@@ -1,4 +1,4 @@
-package com.stage.gestiondestock_backend.controller.Api;
+package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.Dto.EntrepriseDto;
 import io.swagger.annotations.Api;

@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.utils;
 
-import com.stage.gestiondestock_backend.exception.InvalidOperationException;
+//import com.stage.gestiondestock_backend.exception.InvalidOperationException;
+import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.auth.ExtendedUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -72,7 +73,7 @@ public class JwtUtil {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         Optional<String> currentUserLogin = Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
         if (currentUserLogin.isEmpty()) {
-            throw new InvalidOperationException("Aucun utilisateur connecte");
+            throw new InvalidEntityException("Aucun utilisateur connecte");
         }
         return currentUserLogin.get();
     }

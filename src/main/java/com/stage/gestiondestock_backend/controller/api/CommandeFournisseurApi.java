@@ -1,4 +1,4 @@
-package com.stage.gestiondestock_backend.controller.Api;
+package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.Dto.CommandeFournisseurDto;
 import io.swagger.annotations.Api;
@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,7 +37,7 @@ public interface CommandeFournisseurApi {
             @ApiResponse(code= 200, message = "La commande fournisseur a ete trouve dans la BD"),
             @ApiResponse(code= 400, message = "Aucune commande fournisseur n'existe dans la bd avec le CODE fourni")
     })
-    @GetMapping(value = APP_ROOT + "/commandesfournisseurs/code/{nomFournisseur}", produces =  MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/commandesfournisseurs/code/{codeCommandeFournisseur}", produces =  MediaType.APPLICATION_JSON_VALUE)
     CommandeFournisseurDto findByCode(@PathVariable ("codeCommandeFournisseur") String code);
 
     @ApiOperation(value = "Renvoi la liste des commandes fournisseurs", notes="Cette methode permet de chercher et de renvoyer la liste des commandes fournisseurs qui existent" + "dans la BD",responseContainer = "List<CommandeFournisseurDto>")
@@ -55,26 +54,4 @@ public interface CommandeFournisseurApi {
    @DeleteMapping(value = APP_ROOT + "/commandesfournisseurs/delete/{idCommandeFournisseur}")
    void delete(@PathVariable("idCommandeFournisseur") Long id);
 }
-
-
-
-
-//@Api(COMMANDE_FOURNISSEUR_ENDPOINT)
-//public interface CommandeFournisseurApi {
-//
-//    @PostMapping(CREATE_COMMANDE_FOURNISSEUR_ENDPOINT +"/create")
-//    CommandeFournisseurDto save(@RequestBody CommandeFournisseurDto dto);
-//
-//    @GetMapping(FIND_COMMANDE_FOURNISSEUR_BY_ID_ENDPOINT )
-//    CommandeFournisseurDto findById(@PathVariable("idCommandeFournisseur") Long id);
-//
-//    @GetMapping(FIND_COMMANDE_FOURNISSEUR_BY_CODE_ENDPOINT )
-//    CommandeFournisseurDto findByCode(@PathVariable("codeCommandeFournisseur") String code);
-//
-//    @GetMapping(FIND_ALL_COMMANDE_FOURNISSEUR_ENDPOINT )
-//    List<CommandeFournisseurDto> findAll();
-//
-//    @DeleteMapping(DELETE_COMMANDE_FOURNISSEUR_ENDPOINT)
-//    void delete(@PathVariable("idCommandeFournisseur") Long id);
-//}
 

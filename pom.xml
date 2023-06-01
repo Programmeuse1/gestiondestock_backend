@@ -95,7 +95,7 @@
 						<apiSource>
 							<springmvc>true</springmvc>
 							<locations>
-								<location>com.stage.gestiondestock_backend.controller.Api</location>
+								<location>com.stage.gestiondestock_backend.controller.api</location>
 							</locations>
 							<basePath>http://localhost:8081</basePath>
 							<info>

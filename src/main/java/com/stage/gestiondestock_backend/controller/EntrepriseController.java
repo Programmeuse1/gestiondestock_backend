@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.EntrepriseDto;
-import com.stage.gestiondestock_backend.controller.Api.EntrepriseApi;
+import com.stage.gestiondestock_backend.controller.api.EntrepriseApi;
 import com.stage.gestiondestock_backend.service.EntrepriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,6 @@ public class EntrepriseController implements EntrepriseApi {
 
     @Override
     public EntrepriseDto save(EntrepriseDto dto) {
-        System.out.println("\nentreprise dto: "+dto.toString()+"\n");
         return entrepriseService.save(dto);}
 
     @Override

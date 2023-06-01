@@ -1,10 +1,9 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.CommandeFournisseurDto;
-import com.stage.gestiondestock_backend.controller.Api.CommandeFournisseurApi;
+import com.stage.gestiondestock_backend.controller.api.CommandeFournisseurApi;
 import com.stage.gestiondestock_backend.service.CommandeFournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

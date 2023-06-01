@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.ArticleDto;
-import com.stage.gestiondestock_backend.controller.Api.ArticleApi;
+import com.stage.gestiondestock_backend.controller.api.ArticleApi;
 import com.stage.gestiondestock_backend.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +22,6 @@ public class ArticleController implements ArticleApi {
 
     @Override
     public ArticleDto save(ArticleDto dto) {
-        System.out.println("\n\n save dto called \n ");
-        System.out.println("\n\n dto " + dto.toString() + "\n");
         return articleService.save(dto); }
 
     @Override
