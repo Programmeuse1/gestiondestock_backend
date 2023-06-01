@@ -38,7 +38,7 @@ public interface CommandeFournisseurApi {
             @ApiResponse(code= 200, message = "La commande fournisseur a ete trouve dans la BD"),
             @ApiResponse(code= 400, message = "Aucune commande fournisseur n'existe dans la bd avec le CODE fourni")
     })
-    @GetMapping(value = APP_ROOT + "/commandesfournisseurs/code/{nomFournisseur}", produces =  MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = APP_ROOT + "/commandesfournisseurs/code/{codeCommandeFournisseur}", produces =  MediaType.APPLICATION_JSON_VALUE)
     CommandeFournisseurDto findByCode(@PathVariable ("codeCommandeFournisseur") String code);
 
     @ApiOperation(value = "Renvoi la liste des commandes fournisseurs", notes="Cette methode permet de chercher et de renvoyer la liste des commandes fournisseurs qui existent" + "dans la BD",responseContainer = "List<CommandeFournisseurDto>")

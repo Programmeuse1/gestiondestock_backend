@@ -15,7 +15,7 @@ public interface CommandeClientApi {
     ResponseEntity<CommandeClientDto> save(@RequestBody CommandeClientDto dto);
 
     @GetMapping(APP_ROOT + "/commandesclients/{idCommandeClient}")
-    ResponseEntity<CommandeClientDto> findById(@PathVariable Long id);
+    ResponseEntity<CommandeClientDto> findById(@PathVariable ("idCommandeClient") Long id);
 
     @GetMapping(APP_ROOT + "/commandesclients/{codeCommandeClient}")
     ResponseEntity<CommandeClientDto> findByCode(@PathVariable("codeCommandeClient") String code);

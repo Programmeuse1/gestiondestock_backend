@@ -15,7 +15,7 @@ public interface MvtStockApi {
     MvtStockDto save(@RequestBody MvtStockDto dto);
 
     @GetMapping(MVTSTOCK_ENDPOINT + "/{idMvtStock}")
-    MvtStockDto findById(@PathVariable Long id);
+    MvtStockDto findById(@PathVariable ("idMvtStock") Long id);
 
     @GetMapping(MVTSTOCK_ENDPOINT + "/all")
     List <MvtStockDto> findAll();
