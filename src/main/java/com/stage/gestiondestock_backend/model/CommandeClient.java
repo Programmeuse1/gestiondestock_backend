@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.stage.gestiondestock_backend.model.enumeration.EtatCommande;
 import lombok.*;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -38,6 +39,9 @@ public class CommandeClient extends AbstractEntity{
     @OneToMany(mappedBy ="commandeClient")
     private List<LigneCommandeClient> ligneCommandeClients;
 
+    @PrePersist
+    @PreUpdate
+    public void prePersist() {
+        dateCommande = dateCommande == null ? Instant.now() : dateCommande;
+    }
 }
-
-

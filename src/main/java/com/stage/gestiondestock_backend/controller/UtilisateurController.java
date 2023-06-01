@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.UtilisateurDto;
-import com.stage.gestiondestock_backend.controller.Api.UtilisateurApi;
+import com.stage.gestiondestock_backend.controller.api.UtilisateurApi;
 import com.stage.gestiondestock_backend.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,6 @@ public class UtilisateurController implements UtilisateurApi {
 
     @Override
     public UtilisateurDto save(UtilisateurDto dto) {
-        System.out.println("\nutilisateur dto: "+dto.toString()+"\n");
         return utilisateurService.save(dto);}
 
     @Override

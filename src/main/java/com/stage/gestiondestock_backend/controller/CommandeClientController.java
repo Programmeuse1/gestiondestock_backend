@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.CommandeClientDto;
-import com.stage.gestiondestock_backend.controller.Api.CommandeClientApi;
+import com.stage.gestiondestock_backend.controller.api.CommandeClientApi;
 import com.stage.gestiondestock_backend.service.CommandeClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

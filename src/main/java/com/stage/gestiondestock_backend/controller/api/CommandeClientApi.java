@@ -1,4 +1,4 @@
-package com.stage.gestiondestock_backend.controller.Api;
+package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.Dto.CommandeClientDto;
 import io.swagger.annotations.Api;
@@ -15,7 +15,7 @@ public interface CommandeClientApi {
     ResponseEntity<CommandeClientDto> save(@RequestBody CommandeClientDto dto);
 
     @GetMapping(APP_ROOT + "/commandesclients/{idCommandeClient}")
-    ResponseEntity<CommandeClientDto> findById(@PathVariable ("idCommandeClient") Long id);
+    ResponseEntity<CommandeClientDto> findById(@PathVariable("idCommandeClient") Long id);
 
     @GetMapping(APP_ROOT + "/commandesclients/{codeCommandeClient}")
     ResponseEntity<CommandeClientDto> findByCode(@PathVariable("codeCommandeClient") String code);
