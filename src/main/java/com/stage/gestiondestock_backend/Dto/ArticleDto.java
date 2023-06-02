@@ -3,6 +3,7 @@ package com.stage.gestiondestock_backend.Dto;
 import com.stage.gestiondestock_backend.model.Article;
 import lombok.*;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Builder
 @Getter
@@ -16,13 +17,15 @@ public class ArticleDto {
 
     private String code;
 
+    private boolean actif;
+
     private String designation;
 
     private BigDecimal prixUnitaireHt;
 
     private BigDecimal tauxTva;
 
-    private BigDecimal PrixUnitaireTtc;
+    private BigDecimal prixUnitaireTtc;
 
     private String photo;
 
@@ -30,19 +33,22 @@ public class ArticleDto {
 
     private CategoryDto category;
 
-    public static ArticleDto fromEntity(Article article){
-        if(article == null){
+    public static ArticleDto fromEntity(Article article) {
+        if (article == null) {
             return null;
         }
 
         return ArticleDto.builder()
                 .id(article.getId())
                 .code(article.getCode())
+                .actif(article.isActif())
                 .designation(article.getDesignation())
                 .prixUnitaireHt(article.getPrixUnitaireHt())
                 .tauxTva(article.getTauxTva())
-                .idEntreprise(article.getIdEntreprise())
+                .prixUnitaireTtc(article.getPrixUnitaireTtc())
                 .photo(article.getPhoto())
+                .idEntreprise(article.getIdEntreprise())
+                .category(CategoryDto.fromEntity(article.getCategory()))
                 .build();
     }
 
@@ -53,10 +59,12 @@ public class ArticleDto {
             //TODO throw exception
         }
         Article article =new Article();
-       // article.setId(articleDto.getId());
+        article.setId(articleDto.getId());
         article.setCode(articleDto.getCode());
+        article.setActif(articleDto.isActif());
         article.setDesignation(articleDto.getDesignation());
         article.setPrixUnitaireHt(articleDto.getPrixUnitaireHt());
+        article.setPrixUnitaireTtc(articleDto.getPrixUnitaireTtc());
         article.setTauxTva(articleDto.getTauxTva());
         article.setIdEntreprise(articleDto.getIdEntreprise());
         article.setPhoto(articleDto.getPhoto());
