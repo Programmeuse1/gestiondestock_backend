@@ -1,6 +1,8 @@
 package com.stage.gestiondestock_backend.service;
 
 import com.stage.gestiondestock_backend.Dto.ArticleDto;
+import com.stage.gestiondestock_backend.model.Article;
+import com.stage.gestiondestock_backend.service.criteria.ArticleCriteria;
 
 import java.util.List;
 
@@ -13,6 +15,8 @@ public interface ArticleService {
     ArticleDto findByCode(String code);
 
     List<ArticleDto> findAll();
+
+    List<ArticleDto> listingArticle(ArticleCriteria articleCriteria);
 
     void delete(Long id);
 

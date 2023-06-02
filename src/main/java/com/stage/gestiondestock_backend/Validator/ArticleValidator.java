@@ -19,9 +19,9 @@ public class ArticleValidator {
             return errors;
         }
 
-        if (!StringUtils.hasLength(articleDto.getCode())) {
+        /*if (!StringUtils.hasLength(articleDto.getCode())) {
             errors.add("veuillez renseignez le code l'article");
-        }
+        }*/
         if (!StringUtils.hasLength(articleDto.getDesignation())) {
             errors.add("veuillez renseignez la designation de l'article");
         }

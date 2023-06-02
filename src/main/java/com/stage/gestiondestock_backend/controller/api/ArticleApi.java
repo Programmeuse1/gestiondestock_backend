@@ -1,6 +1,8 @@
 package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.Dto.ArticleDto;
+import com.stage.gestiondestock_backend.model.Article;
+import com.stage.gestiondestock_backend.service.criteria.ArticleCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -43,8 +45,8 @@ public interface ArticleApi {
     @ApiResponses(value = {
             @ApiResponse(code= 200, message = "La liste des articles/ une liste vide"),
     })
-   @GetMapping(value = APP_ROOT + "/article/all", produces =  MediaType.APPLICATION_JSON_VALUE)
-   List<ArticleDto> findAll();
+    @GetMapping(value = APP_ROOT + "/article/all", produces =  MediaType.APPLICATION_JSON_VALUE)
+    List<ArticleDto> findAll();
 
     @ApiOperation(value = "Supprimer un article", notes="Cette methode permet de supprimer un article par son ID",response = ArticleDto.class)
     @ApiResponses(value = {
@@ -52,4 +54,13 @@ public interface ArticleApi {
     })
     @DeleteMapping(value = APP_ROOT + "/article/delete/{idArticle}")
     void delete(@PathVariable("idArticle") Long id);
+
+    @ApiOperation(value = "Renvoi la liste des articles en fonction des critères de recherche",
+            notes="Cette methode permet de chercher et de renvoyer la liste des article qui existent" +
+                    "dans la BD", responseContainer = "List<ArticleDto>")
+    @ApiResponses(value = {
+            @ApiResponse(code= 200, message = "La liste des articles/ une liste vide"),
+    })
+    @PostMapping(value = APP_ROOT + "/article/listingArticle", produces =  MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    List<ArticleDto> listingArticle(@RequestBody ArticleCriteria articleCriteria);
 }

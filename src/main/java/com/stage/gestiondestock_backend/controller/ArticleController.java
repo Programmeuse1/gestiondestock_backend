@@ -2,7 +2,9 @@ package com.stage.gestiondestock_backend.controller;
 
 import com.stage.gestiondestock_backend.Dto.ArticleDto;
 import com.stage.gestiondestock_backend.controller.api.ArticleApi;
+import com.stage.gestiondestock_backend.model.Article;
 import com.stage.gestiondestock_backend.service.ArticleService;
+import com.stage.gestiondestock_backend.service.criteria.ArticleCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +39,11 @@ public class ArticleController implements ArticleApi {
     @Override
     public List<ArticleDto> findAll() {
         return articleService.findAll();
+    }
+
+    @Override
+    public List<ArticleDto> listingArticle(ArticleCriteria articleCriteria) {
+        return articleService.listingArticle(articleCriteria);
     }
 
     @Override
