@@ -6,6 +6,7 @@ import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,6 +26,9 @@ public class Article  extends AbstractEntity{
 
     @Column(name = "designation")
     private String designation;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
 
     @Column(name = "prixunitaireht")
     private BigDecimal prixUnitaireHt;
@@ -50,5 +54,9 @@ public class Article  extends AbstractEntity{
         code = code == null ? "ART- " + MethodUtils.format(getId().intValue(), 6) : code;
     }
 
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 }
 
