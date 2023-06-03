@@ -17,6 +17,8 @@ public class CategoryDto {
 
     private String code;
 
+    private boolean actif;
+
     private String designation;
 
     private Integer idEntreprise;
@@ -30,6 +32,7 @@ public class CategoryDto {
 
         return CategoryDto.builder()
                 .id(category.getId())
+                .actif(category.isActif())
                 .code(category.getCode())
                 .designation(category.getDesignation())
                 .idEntreprise(category.getIdEntreprise())
@@ -43,6 +46,7 @@ public class CategoryDto {
         }
        Category category = new Category();
                 category.setId(categoryDto.getId());
+                category.setActif(categoryDto.isActif());
                 category.setCode(categoryDto.getCode());
                 category.setDesignation(categoryDto.getDesignation());
                 category.setIdEntreprise(categoryDto.getIdEntreprise());

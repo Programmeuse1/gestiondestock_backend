@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
+import com.google.common.base.Strings;
 import com.stage.gestiondestock_backend.Dto.FournisseurDto;
 import com.stage.gestiondestock_backend.Validator.FournisseurValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
@@ -7,9 +8,13 @@ import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.Fournisseur;
 import com.stage.gestiondestock_backend.repository.FournisseurRepository;
+import com.stage.gestiondestock_backend.repository.specification.FournisseurSpecification;
 import com.stage.gestiondestock_backend.service.FournisseurService;
+import com.stage.gestiondestock_backend.service.criteria.FournisseurCriteria;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -89,4 +94,15 @@ public class FournisseurServiceImplement implements FournisseurService {
         }
        fournisseurRepository.deleteById(id);
     }
+
+    @Override
+    public List<FournisseurDto> listingFournisseur(FournisseurCriteria fournisseurCriteria) {
+
+        return fournisseurRepository.findAll(FournisseurSpecification.getFournisseur(fournisseurCriteria),
+                Strings.isNullOrEmpty(fournisseurCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(fournisseurCriteria.getNombreDeResultat()))).getContent().stream()
+                .map(FournisseurDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 }

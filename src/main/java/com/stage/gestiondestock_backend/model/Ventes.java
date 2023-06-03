@@ -28,6 +28,9 @@ public class Ventes extends AbstractEntity{
     @Column(name = "code")
     private String code;
 
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
     @Column(name = "datevente")
     private Instant dateVente;
 

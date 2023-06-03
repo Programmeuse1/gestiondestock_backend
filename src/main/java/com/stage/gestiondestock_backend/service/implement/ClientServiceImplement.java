@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
+import com.google.common.base.Strings;
 import com.stage.gestiondestock_backend.Dto.ClientDto;
 import com.stage.gestiondestock_backend.Validator.ClientValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
@@ -7,9 +8,13 @@ import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.Client;
 import com.stage.gestiondestock_backend.repository.ClientRepository;
+import com.stage.gestiondestock_backend.repository.specification.ClientSpecification;
 import com.stage.gestiondestock_backend.service.ClientService;
+import com.stage.gestiondestock_backend.service.criteria.ClientCriteria;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -89,5 +94,15 @@ public class ClientServiceImplement implements ClientService {
         }
         clientRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<ClientDto> listingClient(ClientCriteria clientCriteria) {
+
+        return clientRepository.findAll(ClientSpecification.getClient(clientCriteria),
+                Strings.isNullOrEmpty(clientCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(clientCriteria.getNombreDeResultat()))).getContent().stream()
+                .map(ClientDto::fromEntity)
+                .collect(Collectors.toList());
     }
 }

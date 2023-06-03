@@ -24,6 +24,12 @@ public class MvtStock extends AbstractEntity{
     @Column(name ="quantite")
     private BigDecimal quantite;
 
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "identreprise")
     private Integer idEntreprise;
 

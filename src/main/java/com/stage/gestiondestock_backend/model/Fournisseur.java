@@ -21,6 +21,12 @@ public class Fournisseur extends AbstractEntity{
     @Column(name = "prenom")
     private String prenom;
 
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
+    @Column(name = "code")
+    private String code;
+
     @Embedded
     private Adresse adresse;
 

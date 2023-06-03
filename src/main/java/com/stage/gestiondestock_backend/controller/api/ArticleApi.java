@@ -55,6 +55,7 @@ public interface ArticleApi {
     @DeleteMapping(value = APP_ROOT + "/article/delete/{idArticle}")
     void delete(@PathVariable("idArticle") Long id);
 
+    //Debut du listing
     @ApiOperation(value = "Renvoi la liste des articles en fonction des critères de recherche",
             notes="Cette methode permet de chercher et de renvoyer la liste des article qui existent" +
                     "dans la BD", responseContainer = "List<ArticleDto>")

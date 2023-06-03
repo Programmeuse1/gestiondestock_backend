@@ -21,8 +21,14 @@ public class Client extends AbstractEntity{
     @Column(name = "nom")
     private String nom;
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "prenom")
     private String prenom ;
+
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
 
     @Embedded
     private Adresse adresse;

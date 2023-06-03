@@ -20,6 +20,9 @@ public class LigneCommandeClient extends AbstractEntity{
     @Column(name = "prixunitaire")
     private BigDecimal prixUnitaire;
 
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
     @Column(name = "code")
     private String code;
 

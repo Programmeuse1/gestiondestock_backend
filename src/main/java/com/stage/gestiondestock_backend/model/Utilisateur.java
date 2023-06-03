@@ -30,6 +30,12 @@ public class Utilisateur extends AbstractEntity {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
     @Column(name = "datedenaissance")
     private Instant dateDeNaissance;
 
