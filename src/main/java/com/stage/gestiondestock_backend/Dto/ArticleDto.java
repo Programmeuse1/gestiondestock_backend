@@ -3,7 +3,7 @@ package com.stage.gestiondestock_backend.Dto;
 import com.stage.gestiondestock_backend.model.Article;
 import lombok.*;
 import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -20,6 +20,8 @@ public class ArticleDto {
     private boolean actif;
 
     private String designation;
+
+    private LocalDateTime dateEnregistrement;
 
     private BigDecimal prixUnitaireHt;
 
@@ -42,6 +44,7 @@ public class ArticleDto {
                 .id(article.getId())
                 .code(article.getCode())
                 .actif(article.isActif())
+                .dateEnregistrement(article.getDateEnregistrement())
                 .designation(article.getDesignation())
                 .prixUnitaireHt(article.getPrixUnitaireHt())
                 .tauxTva(article.getTauxTva())
@@ -62,6 +65,7 @@ public class ArticleDto {
         article.setId(articleDto.getId());
         article.setCode(articleDto.getCode());
         article.setActif(articleDto.isActif());
+        article.setDateEnregistrement(articleDto.getDateEnregistrement());
         article.setDesignation(articleDto.getDesignation());
         article.setPrixUnitaireHt(articleDto.getPrixUnitaireHt());
         article.setPrixUnitaireTtc(articleDto.getPrixUnitaireTtc());
