@@ -1,8 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Adresse;
 import com.stage.gestiondestock_backend.model.Client;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -18,6 +20,8 @@ public class ClientDto {
     private boolean actif;
 
     private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private String prenom ;
 
@@ -36,6 +40,7 @@ public class ClientDto {
 
         return ClientDto.builder()
                 .id(client.getId())
+                .dateEnregistrement(client.getDateEnregistrement())
                 .actif(client.isActif())
                 .nom(client.getNom())
                 .code(client.getCode())
@@ -55,6 +60,7 @@ public class ClientDto {
 
         Client client =new Client();
         client.setId(clientDto.getId());
+        client.setDateEnregistrement(clientDto.getDateEnregistrement());
         client.setNom(clientDto.getNom());
         client.setCode(clientDto.getCode());
         client.setAdresse(clientDto.getAdresse());

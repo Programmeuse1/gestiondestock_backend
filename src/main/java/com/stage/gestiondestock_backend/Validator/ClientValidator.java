@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.Validator;
 
-import com.stage.gestiondestock_backend.Dto.ClientDto;
+import com.stage.gestiondestock_backend.dto.ClientDto;
 import org.springframework.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;

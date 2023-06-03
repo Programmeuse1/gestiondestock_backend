@@ -6,6 +6,7 @@ import javax.persistence.*;
 import com.stage.gestiondestock_backend.model.enumeration.EtatCommande;
 import lombok.*;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -39,5 +40,13 @@ public class CommandeFournisseur extends AbstractEntity {
 
     @OneToMany(mappedBy = "commandeFournisseur")
     private List<LigneCommandeFournisseur> ligneCommandeFournisseurs;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 }
 

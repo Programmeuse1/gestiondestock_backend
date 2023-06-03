@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.CategoryDto;
+import com.stage.gestiondestock_backend.dto.CategoryDto;
 import com.stage.gestiondestock_backend.Validator.CategoryValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;

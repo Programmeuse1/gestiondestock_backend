@@ -42,6 +42,14 @@ public class CommandeClient extends AbstractEntity{
     @OneToMany(mappedBy ="commandeClient")
     private List<LigneCommandeClient> ligneCommandeClients;
 
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
+
     @PrePersist
     @PreUpdate
     public void prePersist() {

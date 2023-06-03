@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.service.implement;
 
 import com.google.common.base.Strings;
-import com.stage.gestiondestock_backend.Dto.FournisseurDto;
+import com.stage.gestiondestock_backend.dto.FournisseurDto;
 import com.stage.gestiondestock_backend.Validator.FournisseurValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;

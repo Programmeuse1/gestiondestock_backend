@@ -1,9 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Adresse;
 import com.stage.gestiondestock_backend.model.Entreprise;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -20,6 +21,8 @@ public class EntrepriseDto {
     private String description;
 
     private Adresse adresse;
+
+    private LocalDateTime dateEnregistrement;
 
     private String codeFiscal;
 
@@ -39,9 +42,10 @@ public class EntrepriseDto {
         }
 
         return EntrepriseDto.builder()
-                //.id(client.getId())
+                .id(entreprise.getId())
                 .nom(entreprise.getNom())
                 .description(entreprise.getDescription())
+                .dateEnregistrement(entreprise.getDateEnregistrement())
                 .codeFiscal(entreprise.getCodeFiscal())
                 .photo(entreprise.getPhoto())
                 .numTel(entreprise.getNumTel())
@@ -56,6 +60,7 @@ public class EntrepriseDto {
         }
         Entreprise entreprise = new Entreprise();
         entreprise.setId(entrepriseDto.getId());
+        entreprise.setDateEnregistrement(entrepriseDto.getDateEnregistrement());
         entreprise.setNom(entrepriseDto.getNom());
         entreprise.setDescription(entrepriseDto.getDescription());
         entreprise.setCodeFiscal(entrepriseDto.getCodeFiscal());

@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.Validator;
 
-import com.stage.gestiondestock_backend.Dto.LigneVenteDto;
+import com.stage.gestiondestock_backend.dto.LigneVenteDto;
 
 import java.util.ArrayList;
 import java.util.List;

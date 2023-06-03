@@ -1,11 +1,11 @@
 package com.stage.gestiondestock_backend.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 
 @Getter
@@ -44,5 +44,13 @@ public class Client extends AbstractEntity{
 
     @Column(name = "identreprise")
     private Integer idEntreprise;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 }
 

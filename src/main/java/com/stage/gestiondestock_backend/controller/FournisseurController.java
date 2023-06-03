@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller;
 
-import com.stage.gestiondestock_backend.Dto.FournisseurDto;
+import com.stage.gestiondestock_backend.dto.FournisseurDto;
 import com.stage.gestiondestock_backend.controller.api.FournisseurApi;
 import com.stage.gestiondestock_backend.service.FournisseurService;
 import com.stage.gestiondestock_backend.service.criteria.FournisseurCriteria;

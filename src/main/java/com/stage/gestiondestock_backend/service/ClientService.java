@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.ClientDto;
+import com.stage.gestiondestock_backend.dto.ClientDto;
 import com.stage.gestiondestock_backend.service.criteria.ClientCriteria;
 
 import java.util.List;

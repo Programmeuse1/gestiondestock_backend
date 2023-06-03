@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.MvtStockDto;
+import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import java.util.List;
 
 public interface MvtStockService {

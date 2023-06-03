@@ -1,14 +1,13 @@
 package com.stage.gestiondestock_backend.service.implement;
 
 import com.google.common.base.Strings;
-import com.stage.gestiondestock_backend.Dto.ArticleDto;
-import com.stage.gestiondestock_backend.Dto.CategoryDto;
+import com.stage.gestiondestock_backend.dto.ArticleDto;
+import com.stage.gestiondestock_backend.dto.CategoryDto;
 import com.stage.gestiondestock_backend.Validator.ArticleValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.Article;
-import com.stage.gestiondestock_backend.model.Category;
 import com.stage.gestiondestock_backend.repository.ArticleRepository;
 import com.stage.gestiondestock_backend.repository.CategoryRepository;
 import com.stage.gestiondestock_backend.repository.specification.ArticleSpecification;
@@ -17,7 +16,6 @@ import com.stage.gestiondestock_backend.service.criteria.ArticleCriteria;
 import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;

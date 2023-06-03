@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller;
 
-import com.stage.gestiondestock_backend.Dto.auth.AuthenticationRequest;
-import com.stage.gestiondestock_backend.Dto.auth.AuthenticationResponse;
+import com.stage.gestiondestock_backend.dto.auth.AuthenticationRequest;
+import com.stage.gestiondestock_backend.dto.auth.AuthenticationResponse;
 import com.stage.gestiondestock_backend.controller.api.AuthenticationControllerApi;
 import com.stage.gestiondestock_backend.model.auth.ExtendedUser;
 import com.stage.gestiondestock_backend.service.auth.ApplicationUserDetailsService;

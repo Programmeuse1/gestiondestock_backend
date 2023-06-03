@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller;
 
-import com.stage.gestiondestock_backend.Dto.CommandeFournisseurDto;
+import com.stage.gestiondestock_backend.dto.CommandeFournisseurDto;
 import com.stage.gestiondestock_backend.controller.api.CommandeFournisseurApi;
 import com.stage.gestiondestock_backend.service.CommandeFournisseurService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.RolesDto;
+import com.stage.gestiondestock_backend.dto.RolesDto;
 import com.stage.gestiondestock_backend.Validator.RolesValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;

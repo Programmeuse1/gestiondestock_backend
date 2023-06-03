@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller;
 
-import com.stage.gestiondestock_backend.Dto.MvtStockDto;
+import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import com.stage.gestiondestock_backend.controller.api.MvtStockApi;
 import com.stage.gestiondestock_backend.service.MvtStockService;
 import org.springframework.beans.factory.annotation.Autowired;

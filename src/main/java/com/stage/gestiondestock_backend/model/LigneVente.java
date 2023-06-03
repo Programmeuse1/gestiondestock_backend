@@ -3,6 +3,7 @@ package com.stage.gestiondestock_backend.model;
 import javax.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -35,6 +36,14 @@ public class LigneVente extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name ="idvente")
     private Ventes vente;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 
 }
 

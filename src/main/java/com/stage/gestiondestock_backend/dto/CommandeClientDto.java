@@ -1,10 +1,11 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.CommandeClient;
 import com.stage.gestiondestock_backend.model.enumeration.EtatCommande;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -19,6 +20,8 @@ public class CommandeClientDto {
     private EtatCommande etatCommande;
 
     private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private Instant dateCommande;
 
@@ -35,9 +38,10 @@ public class CommandeClientDto {
 
         return CommandeClientDto.builder()
                 .id(commandeClient.getId())
+                .dateEnregistrement(commandeClient.getDateEnregistrement())
                 .etatCommande(commandeClient.getEtatCommande())
                 .code(commandeClient.getCode())
-//                .dateCommande(commandeClient.getDateCommande())
+                .dateCommande(commandeClient.getDateCommande())
                 .idEntreprise(commandeClient.getIdEntreprise())
                 .client(ClientDto.fromEntity(commandeClient.getClient()))
                 .build();
@@ -50,9 +54,10 @@ public class CommandeClientDto {
         }
         CommandeClient commandeClient =new CommandeClient();
         commandeClient.setId(dto.getId());
+        commandeClient.setDateEnregistrement(dto.getDateEnregistrement());
         commandeClient.setEtatCommande(dto.getEtatCommande());
         commandeClient.setCode(dto.getCode());
-//        commandeClient.setDateCommande(dto.getDateCommande());
+        commandeClient.setDateCommande(dto.getDateCommande());
         return commandeClient;
     }
 
