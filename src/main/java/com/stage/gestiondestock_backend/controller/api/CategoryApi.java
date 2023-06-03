@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.Dto.CategoryDto;
+import com.stage.gestiondestock_backend.service.criteria.CategoryCriteria;
 import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -49,4 +50,14 @@ public interface CategoryApi {
     })
     @DeleteMapping(value = APP_ROOT + "/category/delete/{idCategory}")
     void delete(@PathVariable("idCategory") Long id);
+
+    //Debut du listing
+    @ApiOperation(value = "Renvoi la liste des categorie en fonction des critères de recherche",
+            notes="Cette methode permet de chercher et de renvoyer la liste des categories qui existent" +
+                    "dans la BD", responseContainer = "List<CategoryDto>")
+    @ApiResponses(value = {
+            @ApiResponse(code= 200, message = "La liste des categories/ une liste vide"),
+    })
+    @PostMapping(value = APP_ROOT + "/category/listingCategorie", produces =  MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    List<CategoryDto> listingCategory(@RequestBody CategoryCriteria categoryCriteria);
 }

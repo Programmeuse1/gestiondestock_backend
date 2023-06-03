@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
+import com.google.common.base.Strings;
 import com.stage.gestiondestock_backend.Dto.CategoryDto;
 import com.stage.gestiondestock_backend.Validator.CategoryValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
@@ -7,9 +8,13 @@ import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.Category;
 import com.stage.gestiondestock_backend.repository.CategoryRepository;
+import com.stage.gestiondestock_backend.repository.specification.CategorySpecification;
 import com.stage.gestiondestock_backend.service.CategoryService;
+import com.stage.gestiondestock_backend.service.criteria.CategoryCriteria;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import java.util.List;
@@ -81,6 +86,15 @@ public class CategoryServiceImplement implements CategoryService {
     }
 
     @Override
+    public List<CategoryDto> listingCategory(CategoryCriteria categoryCriteria) {
+        return categoryRepository.findAll(CategorySpecification.getCategory(categoryCriteria),
+                Strings.isNullOrEmpty(categoryCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(categoryCriteria.getNombreDeResultat()))).getContent().stream()
+                .map(CategoryDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Long id) {
         if (id == null) {
             log.error("Category ID is null");
@@ -88,6 +102,6 @@ public class CategoryServiceImplement implements CategoryService {
         }
        categoryRepository.deleteById(id);
 
-
     }
+
 }
