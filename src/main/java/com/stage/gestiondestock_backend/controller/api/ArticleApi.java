@@ -1,7 +1,6 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.ArticleDto;
-import com.stage.gestiondestock_backend.model.Article;
+import com.stage.gestiondestock_backend.dto.ArticleDto;
 import com.stage.gestiondestock_backend.service.criteria.ArticleCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -55,6 +54,7 @@ public interface ArticleApi {
     @DeleteMapping(value = APP_ROOT + "/article/delete/{idArticle}")
     void delete(@PathVariable("idArticle") Long id);
 
+    //Debut du listing
     @ApiOperation(value = "Renvoi la liste des articles en fonction des critères de recherche",
             notes="Cette methode permet de chercher et de renvoyer la liste des article qui existent" +
                     "dans la BD", responseContainer = "List<ArticleDto>")

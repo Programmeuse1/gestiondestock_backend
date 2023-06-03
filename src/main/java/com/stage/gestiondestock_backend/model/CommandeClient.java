@@ -26,6 +26,9 @@ public class CommandeClient extends AbstractEntity{
     @Column(name = "code")
     private String code;
 
+    @Column(name = "actif", columnDefinition = "tinyint(1) default 1", nullable = false)
+    private boolean actif;
+
     @Column(name = "datecommande")
     private Instant dateCommande;
 
@@ -39,9 +42,13 @@ public class CommandeClient extends AbstractEntity{
     @OneToMany(mappedBy ="commandeClient")
     private List<LigneCommandeClient> ligneCommandeClients;
 
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
     @PrePersist
-    @PreUpdate
-    public void prePersist() {
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
         dateCommande = dateCommande == null ? Instant.now() : dateCommande;
     }
+
 }

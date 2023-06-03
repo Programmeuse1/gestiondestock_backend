@@ -1,7 +1,9 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Roles;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Builder
 @Getter
@@ -14,6 +16,8 @@ public class RolesDto {
 
     private String roleName;
 
+    private LocalDateTime dateEnregistrement;
+
     private UtilisateurDto utilisateur;
 
     public static RolesDto fromEntity(Roles roles) {
@@ -23,6 +27,7 @@ public class RolesDto {
 
         return RolesDto.builder()
                 .id(roles.getId())
+                .dateEnregistrement(roles.getDateEnregistrement())
                 .roleName(roles.getRoleName())
                 .build();
     }
@@ -33,6 +38,7 @@ public class RolesDto {
         }
         Roles roles = new Roles();
         roles.setId(dto.getId());
+        roles.setDateEnregistrement(dto.getDateEnregistrement());
         roles.setRoleName(dto.getRoleName());
         return roles;
     }

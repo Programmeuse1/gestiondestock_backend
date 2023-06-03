@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.Validator;
 
-import com.stage.gestiondestock_backend.Dto.LigneCommandeClientDto;
+import com.stage.gestiondestock_backend.dto.LigneCommandeClientDto;
 
 import java.util.ArrayList;
 import java.util.List;

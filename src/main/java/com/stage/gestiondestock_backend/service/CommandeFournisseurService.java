@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.CommandeFournisseurDto;
+import com.stage.gestiondestock_backend.dto.CommandeFournisseurDto;
 import java.util.List;
 
 public interface CommandeFournisseurService {

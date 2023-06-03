@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.Validator;
 
-import com.stage.gestiondestock_backend.Dto.RolesDto;
+import com.stage.gestiondestock_backend.dto.RolesDto;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;

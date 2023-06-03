@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.FournisseurDto;
+import com.stage.gestiondestock_backend.dto.FournisseurDto;
+import com.stage.gestiondestock_backend.service.criteria.FournisseurCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -50,4 +51,14 @@ public interface FournisseurApi {
     })
     @DeleteMapping(value = APP_ROOT + "/fournisseur/delete/{idFournisseur}")
     void delete(@PathVariable("idFournisseur") Long id);
+
+    //Debut du listing
+    @ApiOperation(value = "Renvoi la liste des fournisseurs en fonction des critères de recherche",
+            notes="Cette methode permet de chercher et de renvoyer la liste des fournisseurs qui existent" +
+                    "dans la BD", responseContainer = "List<FournisseurDto>")
+    @ApiResponses(value = {
+            @ApiResponse(code= 200, message = "La liste des fournisseurs/ une liste vide"),
+    })
+    @PostMapping(value = APP_ROOT + "/fournisseur/listingFournisseur", produces =  MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    List<FournisseurDto> listingFournisseur(@RequestBody FournisseurCriteria fournisseurCriteria);
 }

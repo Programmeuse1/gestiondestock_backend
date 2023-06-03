@@ -1,4 +1,4 @@
-package com.stage.gestiondestock_backend.Dto.auth;
+package com.stage.gestiondestock_backend.dto.auth;
 
 import lombok.*;
 

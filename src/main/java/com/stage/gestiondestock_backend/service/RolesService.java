@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.RolesDto;
+import com.stage.gestiondestock_backend.dto.RolesDto;
 import java.util.List;
 
 public interface RolesService {

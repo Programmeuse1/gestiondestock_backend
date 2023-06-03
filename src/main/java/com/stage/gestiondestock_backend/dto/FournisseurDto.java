@@ -1,9 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Adresse;
 import com.stage.gestiondestock_backend.model.Fournisseur;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -16,6 +17,12 @@ public class FournisseurDto {
     private Long id;
 
     private String nom;
+
+    private boolean actif;
+
+    private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private String prenom;
 
@@ -37,8 +44,11 @@ public class FournisseurDto {
         }
 
         return FournisseurDto.builder()
-                //.id(client.getId())
+                .id(fournisseur.getId())
+                .dateEnregistrement(fournisseur.getDateEnregistrement())
                 .nom(fournisseur.getNom())
+                .code(fournisseur.getCode())
+                .actif(fournisseur.isActif())
                 .prenom(fournisseur.getPrenom())
                 .adresse(fournisseur.getAdresse())
                 .photo(fournisseur.getPhoto())
@@ -53,13 +63,17 @@ public class FournisseurDto {
             return null;
             //TODO throw exception
         }
-        return Fournisseur.builder()
-                .nom(fournisseurDto.getNom())
-                .prenom(fournisseurDto.getPrenom())
-                .adresse(fournisseurDto.getAdresse())
-                .photo(fournisseurDto.getPhoto())
-                .mail(fournisseurDto.getMail())
-                .numTel(fournisseurDto.getNumTel())
-                .idEntreprise(fournisseurDto.getIdEntreprise())
-                .build();
+        Fournisseur fournisseur =new Fournisseur();
+        fournisseur.setId(fournisseurDto.getId());
+        fournisseur.setDateEnregistrement(fournisseurDto.getDateEnregistrement());
+        fournisseur.setNom(fournisseurDto.getNom());
+        fournisseur.setPrenom(fournisseurDto.getPrenom());
+        fournisseur.setCode(fournisseurDto.getCode());
+        fournisseur.setActif(fournisseurDto.isActif());
+        fournisseur.setAdresse(fournisseurDto.getAdresse());
+        fournisseur.setPhoto(fournisseurDto.getPhoto());
+        fournisseur.setMail(fournisseurDto.getMail());
+        fournisseur.setNumTel(fournisseurDto.getNumTel());
+        fournisseur.setIdEntreprise(fournisseurDto.getIdEntreprise());
+        return fournisseur;
     }}

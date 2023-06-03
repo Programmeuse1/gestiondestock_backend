@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.CommandeClientDto;
+import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import java.util.List;
 
 public interface CommandeClientService {

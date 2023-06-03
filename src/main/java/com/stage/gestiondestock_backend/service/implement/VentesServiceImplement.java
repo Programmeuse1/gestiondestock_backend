@@ -1,8 +1,8 @@
 package com.stage.gestiondestock_backend.service.implement;
 
 
-import com.stage.gestiondestock_backend.Dto.LigneVenteDto;
-import com.stage.gestiondestock_backend.Dto.VentesDto;
+import com.stage.gestiondestock_backend.dto.LigneVenteDto;
+import com.stage.gestiondestock_backend.dto.VentesDto;
 import com.stage.gestiondestock_backend.Validator.VentesValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
@@ -19,7 +19,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

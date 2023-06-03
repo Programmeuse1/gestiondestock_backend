@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.CommandeClientDto;
-import com.stage.gestiondestock_backend.Dto.LigneCommandeClientDto;
+import com.stage.gestiondestock_backend.dto.CommandeClientDto;
+import com.stage.gestiondestock_backend.dto.LigneCommandeClientDto;
 import com.stage.gestiondestock_backend.Validator.CommandeClientValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;

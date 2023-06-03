@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.MvtStockDto;
+import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import com.stage.gestiondestock_backend.Validator.MvtStockValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;

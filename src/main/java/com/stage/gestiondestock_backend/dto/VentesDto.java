@@ -1,9 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Ventes;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -15,6 +16,8 @@ import java.util.List;
 public class VentesDto {
 
     private Long id;
+
+    private LocalDateTime dateEnregistrement;
 
     private Long id_Entreprise;
 
@@ -32,7 +35,8 @@ public class VentesDto {
         }
 
         return VentesDto.builder()
-                //.id(ventes.getId())
+                .id(ventes.getId())
+                .dateEnregistrement(ventes.getDateEnregistrement())
                 .code(ventes.getCode())
                 .datevente(ventes.getDateVente())
                 .observation(ventes.getObservation())
@@ -42,9 +46,10 @@ public class VentesDto {
     public static Ventes toEntity(VentesDto ventesDto) {
         if ( ventesDto == null) {
             return null;
-            //TODO throw exception
         }
         return Ventes.builder()
+                .id(ventesDto.getId())
+                .dateEnregistrement(ventesDto.getDateEnregistrement())
                 .code(ventesDto.getCode())
                 .dateVente(ventesDto.getDatevente())
                 .observation(ventesDto.getObservation())

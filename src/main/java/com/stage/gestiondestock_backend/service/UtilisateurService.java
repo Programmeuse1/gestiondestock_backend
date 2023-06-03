@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.UtilisateurDto;
+import com.stage.gestiondestock_backend.dto.UtilisateurDto;
 import java.util.List;
 
 public interface UtilisateurService {

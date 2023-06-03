@@ -1,9 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Article;
 import com.stage.gestiondestock_backend.model.Category;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -16,6 +17,10 @@ public class CategoryDto {
     private Long id;
 
     private String code;
+
+    private boolean actif;
+
+    private LocalDateTime dateEnregistrement;
 
     private String designation;
 
@@ -30,6 +35,8 @@ public class CategoryDto {
 
         return CategoryDto.builder()
                 .id(category.getId())
+                .dateEnregistrement(category.getDateEnregistrement())
+                .actif(category.isActif())
                 .code(category.getCode())
                 .designation(category.getDesignation())
                 .idEntreprise(category.getIdEntreprise())
@@ -43,6 +50,8 @@ public class CategoryDto {
         }
        Category category = new Category();
                 category.setId(categoryDto.getId());
+                category.setDateEnregistrement(categoryDto.getDateEnregistrement());
+                category.setActif(categoryDto.isActif());
                 category.setCode(categoryDto.getCode());
                 category.setDesignation(categoryDto.getDesignation());
                 category.setIdEntreprise(categoryDto.getIdEntreprise());

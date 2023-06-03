@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.ClientDto;
+import com.stage.gestiondestock_backend.dto.ClientDto;
+import com.stage.gestiondestock_backend.service.criteria.ClientCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -51,4 +52,14 @@ public interface ClientApi {
     })
     @DeleteMapping(value = APP_ROOT + "/client/delete/{idClient}")
     void delete(@PathVariable("idClient") Long id);
+
+    //Debut du listing
+    @ApiOperation(value = "Renvoi la liste des clients en fonction des critères de recherche",
+            notes="Cette methode permet de chercher et de renvoyer la liste des clients qui existent" +
+                    "dans la BD", responseContainer = "List<ClientDto>")
+    @ApiResponses(value = {
+            @ApiResponse(code= 200, message = "La liste des clients/ une liste vide"),
+    })
+    @PostMapping(value = APP_ROOT + "/client/listingClient", produces =  MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    List<ClientDto> listingClient(@RequestBody ClientCriteria clientCriteria);
 }
