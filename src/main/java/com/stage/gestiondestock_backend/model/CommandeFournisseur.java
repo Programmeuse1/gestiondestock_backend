@@ -47,6 +47,7 @@ public class CommandeFournisseur extends AbstractEntity {
     @PrePersist
     void p() {
         dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+        dateCommande = dateCommande == null ? Instant.now() : dateCommande;
     }
 }
 

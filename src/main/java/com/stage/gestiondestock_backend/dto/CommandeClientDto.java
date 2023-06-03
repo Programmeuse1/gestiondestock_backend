@@ -50,7 +50,6 @@ public class CommandeClientDto {
     public static CommandeClient toEntity(CommandeClientDto dto) {
         if (dto== null) {
             return null;
-            //TODO throw exception
         }
         CommandeClient commandeClient =new CommandeClient();
         commandeClient.setId(dto.getId());

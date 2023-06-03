@@ -48,11 +48,7 @@ public class CommandeClient extends AbstractEntity{
     @PrePersist
     void p() {
         dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
-    }
-
-    @PrePersist
-    @PreUpdate
-    public void prePersist() {
         dateCommande = dateCommande == null ? Instant.now() : dateCommande;
     }
+
 }
