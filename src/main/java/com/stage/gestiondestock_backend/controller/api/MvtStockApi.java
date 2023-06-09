@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.MvtStockDto;
+import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;

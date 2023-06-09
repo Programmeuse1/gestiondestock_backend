@@ -1,16 +1,22 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.UtilisateurDto;
+import com.google.common.base.Strings;
+import com.stage.gestiondestock_backend.dto.UtilisateurDto;
 import com.stage.gestiondestock_backend.Validator.UtilisateurValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.Utilisateur;
 import com.stage.gestiondestock_backend.repository.UtilisateurRepository;
+import com.stage.gestiondestock_backend.repository.specification.UtilisateurSpecification;
 import com.stage.gestiondestock_backend.service.UtilisateurService;
+import com.stage.gestiondestock_backend.service.criteria.UtilisateurCriteria;
 import com.stage.gestiondestock_backend.utils.JwtUtil;
+import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import java.util.List;
@@ -37,9 +43,16 @@ public class UtilisateurServiceImplement implements UtilisateurService {
             log.error("Utilisateur is not valid{}", dto);
             throw new InvalidEntityException("L'utilisateur n'est pas valide", ErrorCodes.UTILISATEUR_NOT_VALID, errors);
         }
+
+        //Debut de l'enregistrement du code article
+        Utilisateur utilisateur1 = utilisateurRepository.save(UtilisateurDto.toEntity(dto));
+        utilisateur1.setCode(utilisateur1.getCode() == null ? "UTI-1" + MethodUtils.format(utilisateur1.getId().intValue(), 6) : utilisateur1.getCode());
+//        return UtilisateurDto.fromEntity(utilisateurRepository.save(utilisateur1));
+        //Fin de l'enregistrement du code article
+
         return UtilisateurDto.fromEntity(
                 utilisateurRepository.save(
-                        UtilisateurDto.toEntity(dto)
+                        utilisateur1
                 )
         );
     }
@@ -77,6 +90,15 @@ public class UtilisateurServiceImplement implements UtilisateurService {
     @Override
     public List<UtilisateurDto> findAll() {
         return utilisateurRepository.findAll().stream()
+                .map(UtilisateurDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<UtilisateurDto> listingUtilisateur(UtilisateurCriteria utilisateurCriteria) {
+        return utilisateurRepository.findAll(UtilisateurSpecification.getUtilisateur(utilisateurCriteria),
+                Strings.isNullOrEmpty(utilisateurCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(utilisateurCriteria.getNombreDeResultat()))).getContent().stream()
                 .map(UtilisateurDto::fromEntity)
                 .collect(Collectors.toList());
     }

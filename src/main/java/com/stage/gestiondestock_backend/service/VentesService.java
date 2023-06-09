@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.VentesDto;
+import com.stage.gestiondestock_backend.dto.VentesDto;
 import java.util.List;
 
 public interface VentesService {

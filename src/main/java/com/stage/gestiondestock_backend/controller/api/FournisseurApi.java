@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.FournisseurDto;
+import com.stage.gestiondestock_backend.dto.FournisseurDto;
 import com.stage.gestiondestock_backend.service.criteria.FournisseurCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

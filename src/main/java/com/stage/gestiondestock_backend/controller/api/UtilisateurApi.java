@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.UtilisateurDto;
+import com.stage.gestiondestock_backend.dto.UtilisateurDto;
+import com.stage.gestiondestock_backend.service.criteria.UtilisateurCriteria;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -65,4 +66,14 @@ public interface UtilisateurApi {
     })
     @GetMapping(value = APP_ROOT +"/utilisateur/currentUser", produces = MediaType.APPLICATION_JSON_VALUE)
     UtilisateurDto currentUser();
+
+    //Debut du listing
+    @ApiOperation(value = "Renvoi la liste des utilisateurs en fonction des critères de recherche",
+            notes="Cette methode permet de chercher et de renvoyer la liste des utilisateurs qui existent" +
+                    "dans la BD", responseContainer = "List<UtilisateurDto>")
+    @ApiResponses(value = {
+            @ApiResponse(code= 200, message = "La liste des utilisateurs/ une liste vide"),
+    })
+    @PostMapping(value = APP_ROOT + "/utilisateur/listingUtilisateur", produces =  MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    List<UtilisateurDto> listingUtilisateur(@RequestBody UtilisateurCriteria utilisateurCriteria);
 }

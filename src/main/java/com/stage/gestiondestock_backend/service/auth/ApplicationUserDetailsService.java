@@ -1,16 +1,14 @@
 package com.stage.gestiondestock_backend.service.auth;
 
-import com.stage.gestiondestock_backend.Dto.UtilisateurDto;
+import com.stage.gestiondestock_backend.dto.UtilisateurDto;
 import com.stage.gestiondestock_backend.model.auth.ExtendedUser;
 import com.stage.gestiondestock_backend.service.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ApplicationUserDetailsService implements UserDetailsService {

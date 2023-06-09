@@ -7,6 +7,7 @@ import com.stage.gestiondestock_backend.model.enumeration.TypeMvtStk;
 import lombok.*;
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -44,5 +45,13 @@ public class MvtStock extends AbstractEntity{
     @Column(name ="sourcemvt")
     @Enumerated(EnumType.STRING)
     private SourceMvtStk sourceMvtStk;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 }
 

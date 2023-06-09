@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.service.implement;
 
 import com.google.common.base.Strings;
-import com.stage.gestiondestock_backend.Dto.FournisseurDto;
+import com.stage.gestiondestock_backend.dto.FournisseurDto;
 import com.stage.gestiondestock_backend.Validator.FournisseurValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
@@ -11,6 +11,7 @@ import com.stage.gestiondestock_backend.repository.FournisseurRepository;
 import com.stage.gestiondestock_backend.repository.specification.FournisseurSpecification;
 import com.stage.gestiondestock_backend.service.FournisseurService;
 import com.stage.gestiondestock_backend.service.criteria.FournisseurCriteria;
+import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -42,9 +43,16 @@ public class FournisseurServiceImplement implements FournisseurService {
             log.error("Fournisseur is not valid{}", dto);
             throw new InvalidEntityException("Le fournisseur n'est pas valide", ErrorCodes.FOURNISSEUR_NOT_VALID, errors);
         }
+
+        //Debut de l'enregistrement du code article
+        Fournisseur fournisseur1 = fournisseurRepository.save(FournisseurDto.toEntity(dto));
+        fournisseur1.setCode(fournisseur1.getCode() == null ? "FRS-1" + MethodUtils.format(fournisseur1.getId().intValue(), 6) : fournisseur1.getCode());
+//        return FournisseurDto.fromEntity(fournisseurRepository.save(fournisseur1));
+        //Fin de l'enregistrement du code article
+
         return FournisseurDto.fromEntity(
                 fournisseurRepository.save(
-                        FournisseurDto.toEntity(dto)
+                        fournisseur1
                 )
         );
     }

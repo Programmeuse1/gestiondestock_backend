@@ -7,6 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -57,5 +58,13 @@ public class Utilisateur extends AbstractEntity {
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy ="utilisateur")
     private List<Roles> roles;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 
 }

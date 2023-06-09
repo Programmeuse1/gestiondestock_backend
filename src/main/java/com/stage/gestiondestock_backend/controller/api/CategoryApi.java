@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.CategoryDto;
 import com.stage.gestiondestock_backend.service.criteria.CategoryCriteria;
+import com.stage.gestiondestock_backend.dto.CategoryDto;
 import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

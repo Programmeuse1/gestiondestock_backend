@@ -1,10 +1,12 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.stage.gestiondestock_backend.model.LigneVente;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -17,6 +19,8 @@ public class LigneVenteDto {
     private BigDecimal quantite;
 
     private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private BigDecimal prixUnitaire;
 
@@ -33,6 +37,7 @@ public class LigneVenteDto {
         }
         return LigneVenteDto.builder()
                 .id(ligneVente.getId())
+                .dateEnregistrement(ligneVente.getDateEnregistrement())
                 .code(ligneVente.getCode())
                 .article(ArticleDto.fromEntity(ligneVente.getArticle()))
                 .quantite(ligneVente.getQuantite())
@@ -46,6 +51,7 @@ public class LigneVenteDto {
         }
         LigneVente ligneVente = new LigneVente();
         ligneVente.setId(dto.getId());
+        ligneVente.setDateEnregistrement(dto.getDateEnregistrement());
         ligneVente.setCode(dto.getCode());
         ligneVente.setArticle((ArticleDto.toEntity(dto.getArticle())));
         ligneVente.setPrixUnitaire(dto.getPrixUnitaire());

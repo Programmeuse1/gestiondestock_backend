@@ -1,10 +1,10 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Adresse;
-import com.stage.gestiondestock_backend.model.Client;
 import com.stage.gestiondestock_backend.model.Fournisseur;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Builder
@@ -21,6 +21,8 @@ public class FournisseurDto {
     private boolean actif;
 
     private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private String prenom;
 
@@ -43,6 +45,7 @@ public class FournisseurDto {
 
         return FournisseurDto.builder()
                 .id(fournisseur.getId())
+                .dateEnregistrement(fournisseur.getDateEnregistrement())
                 .nom(fournisseur.getNom())
                 .code(fournisseur.getCode())
                 .actif(fournisseur.isActif())
@@ -62,6 +65,7 @@ public class FournisseurDto {
         }
         Fournisseur fournisseur =new Fournisseur();
         fournisseur.setId(fournisseurDto.getId());
+        fournisseur.setDateEnregistrement(fournisseurDto.getDateEnregistrement());
         fournisseur.setNom(fournisseurDto.getNom());
         fournisseur.setPrenom(fournisseurDto.getPrenom());
         fournisseur.setCode(fournisseurDto.getCode());

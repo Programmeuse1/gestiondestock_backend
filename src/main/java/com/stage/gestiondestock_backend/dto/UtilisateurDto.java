@@ -1,11 +1,11 @@
-package com.stage.gestiondestock_backend.Dto;
+package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.Adresse;
-import com.stage.gestiondestock_backend.model.Entreprise;
 import com.stage.gestiondestock_backend.model.Utilisateur;
 import lombok.*;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -18,6 +18,12 @@ public class UtilisateurDto {
     private Long id;
 
     private String nom;
+
+    private boolean actif;
+
+    private String code;
+
+    private LocalDateTime dateEnregistrement;
 
     private String prenom;
 
@@ -44,7 +50,10 @@ public class UtilisateurDto {
 
         return UtilisateurDto.builder()
                 .id(utilisateur.getId())
+                .dateEnregistrement(utilisateur.getDateEnregistrement())
                 .nom(utilisateur.getNom())
+                .actif(utilisateur.isActif())
+                .code(utilisateur.getCode())
                 .prenom(utilisateur.getPrenom())
                 .dateDeNaissance(utilisateur.getDateDeNaissance())
                 .motDePasse(utilisateur.getMotDePasse())
@@ -58,11 +67,13 @@ public class UtilisateurDto {
     public static Utilisateur toEntity(UtilisateurDto utilisateurDto) {
         if (utilisateurDto == null) {
             return null;
-            //TODO throw exception
         }
         Utilisateur utilisateur = new Utilisateur();
         utilisateur.setId(utilisateurDto.getId());
+        utilisateur.setDateEnregistrement(utilisateurDto.getDateEnregistrement());
         utilisateur.setNom(utilisateurDto.getNom());
+        utilisateur.setActif(utilisateurDto.isActif());
+        utilisateur.setCode(utilisateurDto.getCode());
         utilisateur.setPrenom(utilisateurDto.getPrenom());
         utilisateur.setDateDeNaissance(utilisateurDto.getDateDeNaissance());
         utilisateur.setMotDePasse(utilisateurDto.getMotDePasse());

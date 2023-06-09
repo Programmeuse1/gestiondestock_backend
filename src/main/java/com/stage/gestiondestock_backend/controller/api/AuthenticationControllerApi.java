@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.auth.AuthenticationRequest;
-import com.stage.gestiondestock_backend.Dto.auth.AuthenticationResponse;
+import com.stage.gestiondestock_backend.dto.auth.AuthenticationRequest;
+import com.stage.gestiondestock_backend.dto.auth.AuthenticationResponse;
 import io.swagger.annotations.Api;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

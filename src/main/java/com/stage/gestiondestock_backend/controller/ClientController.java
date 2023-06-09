@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller;
 
-import com.stage.gestiondestock_backend.Dto.ClientDto;
+import com.stage.gestiondestock_backend.dto.ClientDto;
 import com.stage.gestiondestock_backend.controller.api.ClientApi;
 import com.stage.gestiondestock_backend.service.ClientService;
 import com.stage.gestiondestock_backend.service.criteria.ClientCriteria;

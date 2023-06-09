@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.CategoryDto;
 import com.stage.gestiondestock_backend.service.criteria.CategoryCriteria;
+import com.stage.gestiondestock_backend.dto.CategoryDto;
 
 import java.util.List;
 

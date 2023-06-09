@@ -2,6 +2,8 @@ package com.stage.gestiondestock_backend.model;
 
 import javax.persistence.*;
 import lombok.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -42,7 +44,14 @@ public class Fournisseur extends AbstractEntity{
     @Column(name = "identreprise")
     private Integer idEntreprise;
 
-
     @OneToMany(mappedBy ="fournisseur")
     private List<CommandeFournisseur> commandeFournisseurs ;
+
+    @Column(name = "date_enregistrement")
+    private LocalDateTime dateEnregistrement;
+
+    @PrePersist
+    void p() {
+        dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;
+    }
 }

@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.service.implement;
 
 import com.google.common.base.Strings;
-import com.stage.gestiondestock_backend.Dto.ClientDto;
+import com.stage.gestiondestock_backend.dto.ClientDto;
 import com.stage.gestiondestock_backend.Validator.ClientValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
@@ -11,6 +11,7 @@ import com.stage.gestiondestock_backend.repository.ClientRepository;
 import com.stage.gestiondestock_backend.repository.specification.ClientSpecification;
 import com.stage.gestiondestock_backend.service.ClientService;
 import com.stage.gestiondestock_backend.service.criteria.ClientCriteria;
+import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -36,17 +37,26 @@ public class ClientServiceImplement implements ClientService {
 
     @Override
     public ClientDto save(ClientDto dto) {
+
         System.out.println("\nclient dto: "+dto.toString()+"\n");
         List<String> errors = ClientValidator.validate(dto);
         if(!errors.isEmpty()){
             log.error("Client is not valid{}", dto);
             throw new InvalidEntityException("Le client n'est pas valide", ErrorCodes.CLIENT_NOT_VALID, errors);
         }
+
+        //Debut de l'enregistrement du code article
+        Client client1 = clientRepository.save(ClientDto.toEntity(dto));
+        client1.setCode(client1.getCode() == null ? "CLI-" + MethodUtils.format(client1.getId().intValue(), 6) : client1.getCode());
+//        return ClientDto.fromEntity(clientRepository.save(client1));
+        //Fin de l'enregistrement du code article
+
         return ClientDto.fromEntity(
                 clientRepository.save(
-                        ClientDto.toEntity(dto)
+                        client1
                 )
         );
+
     }
 
     @Override

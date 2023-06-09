@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.controller.api;
 
-import com.stage.gestiondestock_backend.Dto.CommandeClientDto;
+import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

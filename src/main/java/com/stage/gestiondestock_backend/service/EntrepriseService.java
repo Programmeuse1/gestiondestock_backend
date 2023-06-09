@@ -1,6 +1,6 @@
 package com.stage.gestiondestock_backend.service;
 
-import com.stage.gestiondestock_backend.Dto.EntrepriseDto;
+import com.stage.gestiondestock_backend.dto.EntrepriseDto;
 
 import java.util.List;
 

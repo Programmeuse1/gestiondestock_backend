@@ -1,8 +1,7 @@
 package com.stage.gestiondestock_backend.service.implement;
 
-import com.stage.gestiondestock_backend.Dto.CommandeFournisseurDto;
-import com.stage.gestiondestock_backend.Dto.LigneCommandeFournisseurDto;
-import com.stage.gestiondestock_backend.Validator.CommandeClientValidator;
+import com.stage.gestiondestock_backend.dto.CommandeFournisseurDto;
+import com.stage.gestiondestock_backend.dto.LigneCommandeFournisseurDto;
 import com.stage.gestiondestock_backend.Validator.CommandeFournisseurValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
 import com.stage.gestiondestock_backend.exception.ErrorCodes;
