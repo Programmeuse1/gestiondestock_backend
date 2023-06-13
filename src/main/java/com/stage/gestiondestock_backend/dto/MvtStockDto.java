@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.dto;
 
 import com.stage.gestiondestock_backend.model.MvtStock;
+import com.stage.gestiondestock_backend.model.enumeration.SourceMvtStk;
 import com.stage.gestiondestock_backend.model.enumeration.TypeMvtStk;
 import lombok.*;
 
@@ -30,6 +31,8 @@ public class MvtStockDto {
 
     private TypeMvtStk typeMvtStk;
 
+    private SourceMvtStk sourceMvtStk;
+
     public static MvtStockDto fromEntity(MvtStock mvtStock) {
         if(mvtStock==null){
             return null;
@@ -42,6 +45,7 @@ public class MvtStockDto {
                 .quantite(mvtStock.getQuantite())
                 .article(ArticleDto.fromEntity(mvtStock.getArticle()))
                 .typeMvtStk(mvtStock.getTypeMvtStk())
+                .sourceMvtStk(mvtStock.getSourceMvtStk())
                 .build();
     }
 
@@ -56,6 +60,8 @@ public class MvtStockDto {
         mvtStock.setDateMvt(dto.getDateMvt());
         mvtStock.setIdEntreprise(dto.getIdEntreprise());
         mvtStock.setQuantite(dto.getQuantite());
+        mvtStock.setTypeMvtStk(dto.getTypeMvtStk());
+        mvtStock.setSourceMvtStk(dto.getSourceMvtStk());
         return mvtStock;
     }
 

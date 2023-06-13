@@ -3,6 +3,7 @@ package com.stage.gestiondestock_backend.controller;
 import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import com.stage.gestiondestock_backend.controller.api.MvtStockApi;
 import com.stage.gestiondestock_backend.service.MvtStockService;
+import com.stage.gestiondestock_backend.service.criteria.MvtStockCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +36,10 @@ public class MvtStockController implements MvtStockApi {
     @Override
     public void delete(Long id) {
         mvtStockService.delete(id);
+    }
+
+    @Override
+    public List<MvtStockDto> listingMvtStock(MvtStockCriteria mvtStockCriteria) {
+        return mvtStockService.listingMvtStock(mvtStockCriteria);
     }
 }

@@ -1,6 +1,7 @@
 package com.stage.gestiondestock_backend.controller.api;
 
 import com.stage.gestiondestock_backend.dto.MvtStockDto;
+import com.stage.gestiondestock_backend.service.criteria.MvtStockCriteria;
 import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -20,5 +21,8 @@ public interface MvtStockApi {
 
     @DeleteMapping(MVTSTOCK_ENDPOINT + "/delete/{idMvtStock}")
     void delete(@PathVariable("idMvtStock") Long id);
+
+    @PostMapping(MVTSTOCK_ENDPOINT + "/mvtStock/listingMvtStock")
+    List<MvtStockDto> listingMvtStock(@RequestBody MvtStockCriteria mvtStockCriteria);
 
 }

@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
+import com.google.common.base.Strings;
 import com.stage.gestiondestock_backend.dto.MvtStockDto;
 import com.stage.gestiondestock_backend.Validator.MvtStockValidator;
 import com.stage.gestiondestock_backend.exception.EntityNotFoundException;
@@ -7,9 +8,13 @@ import com.stage.gestiondestock_backend.exception.ErrorCodes;
 import com.stage.gestiondestock_backend.exception.InvalidEntityException;
 import com.stage.gestiondestock_backend.model.MvtStock;
 import com.stage.gestiondestock_backend.repository.MvtStockRepository;
+import com.stage.gestiondestock_backend.repository.specification.MvtStockSpecification;
 import com.stage.gestiondestock_backend.service.MvtStockService;
+import com.stage.gestiondestock_backend.service.criteria.MvtStockCriteria;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -61,6 +66,16 @@ public class MvtStockServiceImplement implements MvtStockService {
     @Override
     public List<MvtStockDto> findAll() {
         return mvtStockRepository.findAll().stream()
+                .map(MvtStockDto::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<MvtStockDto> listingMvtStock(MvtStockCriteria mvtStockCriteria) {
+
+        return mvtStockRepository.findAll(MvtStockSpecification.getMvtStock(mvtStockCriteria),
+                Strings.isNullOrEmpty(mvtStockCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(mvtStockCriteria.getNombreDeResultat()))).getContent().stream()
                 .map(MvtStockDto::fromEntity)
                 .collect(Collectors.toList());
     }

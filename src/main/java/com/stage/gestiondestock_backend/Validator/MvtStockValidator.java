@@ -25,6 +25,9 @@ public class MvtStockValidator {
         if (mvtStockDto.getTypeMvtStk() == null) {
             errors.add("veuillez renseignez le type de mouvement de stock");
         }
+        if (mvtStockDto.getSourceMvtStk() == null) {
+            errors.add("veuillez renseignez la source du mouvement de stock");
+        }
         return errors;
     }
 }
