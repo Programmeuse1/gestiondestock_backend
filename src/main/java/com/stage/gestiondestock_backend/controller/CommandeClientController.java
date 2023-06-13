@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.controller;
 
+import com.stage.gestiondestock_backend.bean.CommandeClientUpdate;
 import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import com.stage.gestiondestock_backend.controller.api.CommandeClientApi;
 import com.stage.gestiondestock_backend.service.CommandeClientService;
@@ -18,7 +19,7 @@ public class CommandeClientController implements CommandeClientApi {
     }
 
     @Override
-    public ResponseEntity<CommandeClientDto> save(CommandeClientDto dto) {
+    public ResponseEntity<CommandeClientDto> save(CommandeClientUpdate dto) {
         return ResponseEntity.ok(commandeClientService.save(dto));
     }
 
@@ -38,7 +39,7 @@ public class CommandeClientController implements CommandeClientApi {
     }
 
     @Override
-    public ResponseEntity delete(Long id) {
+    public ResponseEntity<CommandeClientDto> delete(Long id) {
         commandeClientService.delete(id);
         return ResponseEntity.ok().build();
     }

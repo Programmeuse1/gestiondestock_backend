@@ -21,6 +21,8 @@ public class ClientDto {
 
     private String code;
 
+    private String email;
+
     private LocalDateTime dateEnregistrement;
 
     private String prenom ;
@@ -44,6 +46,7 @@ public class ClientDto {
                 .actif(client.isActif())
                 .nom(client.getNom())
                 .code(client.getCode())
+                .email(client.getEmail())
                 .adresse(client.getAdresse())
                 .prenom(client.getPrenom())
                 .photo(client.getPhoto())
@@ -63,6 +66,7 @@ public class ClientDto {
         client.setDateEnregistrement(clientDto.getDateEnregistrement());
         client.setNom(clientDto.getNom());
         client.setCode(clientDto.getCode());
+        client.setEmail(clientDto.getEmail());
         client.setAdresse(clientDto.getAdresse());
         client.setActif(clientDto.isActif());
         client.setPrenom(clientDto.getPrenom());

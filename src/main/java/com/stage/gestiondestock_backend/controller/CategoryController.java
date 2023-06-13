@@ -3,6 +3,7 @@ package com.stage.gestiondestock_backend.controller;
 import com.stage.gestiondestock_backend.dto.CategoryDto;
 import com.stage.gestiondestock_backend.controller.api.CategoryApi;
 import com.stage.gestiondestock_backend.service.CategoryService;
+import com.stage.gestiondestock_backend.service.criteria.CategoryCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,5 +40,10 @@ public class CategoryController  implements CategoryApi {
     public void delete(Long id) {
        categoryService.delete(id);
 
+    }
+
+    @Override
+    public List<CategoryDto> listingCategory(CategoryCriteria categoryCriteria) {
+        return categoryService.listingCategory(categoryCriteria);
     }
 }

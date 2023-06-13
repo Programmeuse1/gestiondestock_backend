@@ -45,9 +45,12 @@ public class ArticleServiceImplement implements ArticleService {
         } else {
             throw new EntityNotFoundException("la categorie n'existe pas");
         }
+
+        //Debut de l'enregistrement du code article
         Article article1 = articleRepository.save(ArticleDto.toEntity(dto));
         article1.setCode(article1.getCode() == null ? "ART-" + MethodUtils.format(article1.getId().intValue(), 6) : article1.getCode());
         return ArticleDto.fromEntity(articleRepository.save(article1));
+        //Fin de l'enregistrement du code article
     }
 
     @Override
