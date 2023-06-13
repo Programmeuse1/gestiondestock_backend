@@ -45,6 +45,9 @@ public class CommandeClient extends AbstractEntity{
     @Column(name = "date_enregistrement")
     private LocalDateTime dateEnregistrement;
 
+    @Column(name = "observation")
+    private String observation;
+
     @PrePersist
     void p() {
         dateEnregistrement = dateEnregistrement == null ? LocalDateTime.now() : dateEnregistrement;

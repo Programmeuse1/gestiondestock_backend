@@ -22,6 +22,8 @@ public class LigneCommandeClientDto {
 
     private ArticleDto article;
 
+    private String observation;
+
     @JsonIgnore
     private  CommandeClientDto commandeClient;
 
@@ -40,6 +42,7 @@ public class LigneCommandeClientDto {
                 .quantite(ligneCommandeClient.getQuantite())
                 .code(ligneCommandeClient.getCode())
                 .prixUnitaire(ligneCommandeClient.getPrixUnitaire())
+                .observation(ligneCommandeClient.getObservation())
                 .build();
     }
 
@@ -54,7 +57,21 @@ public class LigneCommandeClientDto {
         ligneCommandeClient.setPrixUnitaire(dto.getPrixUnitaire());
         ligneCommandeClient.setCode(dto.getCode());
         ligneCommandeClient.setQuantite(dto.getQuantite());
+        ligneCommandeClient.setObservation(dto.getObservation());
         return ligneCommandeClient;
 
+    }
+
+    @Override
+    public String toString() {
+        return "LigneCommandeClientDto{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", dateEnregistrement=" + dateEnregistrement +
+                ", article=" + article +
+                ", observation='" + observation + '\'' +
+                ", quantite=" + quantite +
+                ", prixUnitaire=" + prixUnitaire +
+                '}';
     }
 }

@@ -27,6 +27,9 @@ public class LigneCommandeClient extends AbstractEntity{
     @Column(name = "code")
     private String code;
 
+    @Column(name = "observation")
+    private String observation;
+
     @Column(name = "identreprise")
     private Integer idEntreprise;
 
