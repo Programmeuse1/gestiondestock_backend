@@ -31,6 +31,8 @@ public class CommandeClientDto {
 
     private List<LigneCommandeClientDto> ligneCommandeClients;
 
+    private String observation;
+
     public static CommandeClientDto fromEntity(CommandeClient commandeClient){
         if(commandeClient == null){
             return null;
@@ -43,6 +45,7 @@ public class CommandeClientDto {
                 .code(commandeClient.getCode())
                 .dateCommande(commandeClient.getDateCommande())
                 .idEntreprise(commandeClient.getIdEntreprise())
+                .observation(commandeClient.getObservation())
                 .client(ClientDto.fromEntity(commandeClient.getClient()))
                 .build();
     }
@@ -57,7 +60,21 @@ public class CommandeClientDto {
         commandeClient.setEtatCommande(dto.getEtatCommande());
         commandeClient.setCode(dto.getCode());
         commandeClient.setDateCommande(dto.getDateCommande());
+        commandeClient.setObservation(dto.getObservation());
         return commandeClient;
     }
 
+    @Override
+    public String toString() {
+        return "CommandeClientDto{" +
+                "id=" + id +
+                ", etatCommande=" + etatCommande +
+                ", code='" + code + '\'' +
+                ", dateEnregistrement=" + dateEnregistrement +
+                ", dateCommande=" + dateCommande +
+                ", idEntreprise=" + idEntreprise +
+                ", client=" + client +
+                ", observation='" + observation + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.controller.api;
 
+import com.stage.gestiondestock_backend.bean.CommandeClientUpdate;
 import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ public interface CommandeClientApi {
 
 
     @PostMapping(APP_ROOT +"/commandesclients/create")
-    ResponseEntity<CommandeClientDto> save(@RequestBody CommandeClientDto dto);
+    ResponseEntity<CommandeClientDto> save(@RequestBody CommandeClientUpdate dto);
 
     @GetMapping(APP_ROOT + "/commandesclients/{idCommandeClient}")
     ResponseEntity<CommandeClientDto> findById(@PathVariable("idCommandeClient") Long id);
@@ -24,6 +25,6 @@ public interface CommandeClientApi {
     ResponseEntity<List<CommandeClientDto>> findAll();
 
     @DeleteMapping(APP_ROOT + "/commandesclients/delete/{idCommandeClient}")
-    ResponseEntity delete(@PathVariable("idCommandeClient") Long id);
+    ResponseEntity<CommandeClientDto> delete(@PathVariable("idCommandeClient") Long id);
 
 }
