@@ -3,6 +3,7 @@ package com.stage.gestiondestock_backend.controller;
 import com.stage.gestiondestock_backend.dto.UtilisateurDto;
 import com.stage.gestiondestock_backend.controller.api.UtilisateurApi;
 import com.stage.gestiondestock_backend.service.UtilisateurService;
+import com.stage.gestiondestock_backend.service.criteria.UtilisateurCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -41,5 +42,10 @@ public class UtilisateurController implements UtilisateurApi {
     @Override
     public UtilisateurDto currentUser() {
         return utilisateurService.currentUser();
+    }
+
+    @Override
+    public List<UtilisateurDto> listingUtilisateur(UtilisateurCriteria utilisateurCriteria) {
+        return utilisateurService.listingUtilisateur(utilisateurCriteria);
     }
 }

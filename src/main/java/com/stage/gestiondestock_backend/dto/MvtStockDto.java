@@ -23,8 +23,9 @@ public class MvtStockDto {
 
     private BigDecimal quantite;
 
+//    entreprise
     private Integer idEntreprise;
-
+//code
     private  ArticleDto article;
 
     private TypeMvtStk typeMvtStk;
