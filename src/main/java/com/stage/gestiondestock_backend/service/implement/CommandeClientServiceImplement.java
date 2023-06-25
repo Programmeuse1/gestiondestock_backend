@@ -1,5 +1,6 @@
 package com.stage.gestiondestock_backend.service.implement;
 
+import com.google.common.base.Strings;
 import com.stage.gestiondestock_backend.bean.CommandeClientUpdate;
 import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import com.stage.gestiondestock_backend.dto.LigneCommandeClientDto;
@@ -15,10 +16,14 @@ import com.stage.gestiondestock_backend.repository.ArticleRepository;
 import com.stage.gestiondestock_backend.repository.ClientRepository;
 import com.stage.gestiondestock_backend.repository.CommandeClientRepository;
 import com.stage.gestiondestock_backend.repository.LigneCommandeClientRepository;
+import com.stage.gestiondestock_backend.repository.specification.CommandeClientSpecification;
 import com.stage.gestiondestock_backend.service.CommandeClientService;
+import com.stage.gestiondestock_backend.service.criteria.CommandeClientCriteria;
 import com.stage.gestiondestock_backend.utils.MethodUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -65,6 +70,7 @@ public class CommandeClientServiceImplement implements CommandeClientService {
         savedCmdClt.setCode(savedCmdClt.getCode() == null ? "CMDCLT-" + MethodUtils.format(savedCmdClt.getId().intValue(), 6) : savedCmdClt.getCode());
         commandeClientRepository.save(savedCmdClt);
 
+        ligneCommandeClientRepository.deleteAllByCommandeClientId(savedCmdClt.getId());
         if(dto.getLigneCommandeClientDtoList()!= null){
             dto.getLigneCommandeClientDtoList().forEach(ligCmdClt ->{
                 if(ligCmdClt.getArticle()!= null){
@@ -86,6 +92,7 @@ public class CommandeClientServiceImplement implements CommandeClientService {
 
     @Override
     public CommandeClientDto findById(Long id) {
+       System.out.println("\nid: "+id+"\n");
        if(id == null){
            log.error("Commande client ID is NULL");
            return null;
@@ -115,6 +122,15 @@ public class CommandeClientServiceImplement implements CommandeClientService {
        return commandeClientRepository.findAll().stream()
                .map(CommandeClientDto::fromEntity)
                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CommandeClientDto> findCommandeClientListByFilter(CommandeClientCriteria commandeClientCriteria) {
+        return commandeClientRepository.findAll(CommandeClientSpecification.getCommandeClient(commandeClientCriteria),
+                Strings.isNullOrEmpty(commandeClientCriteria.getNombreDeResultat()) ? Pageable.unpaged() :
+                        PageRequest.of(0, Integer.parseInt(commandeClientCriteria.getNombreDeResultat()))).getContent().stream()
+                .map(CommandeClientDto::fromEntity)
+                .collect(Collectors.toList());
     }
 
     @Override

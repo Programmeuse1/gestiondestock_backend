@@ -4,6 +4,7 @@ import com.stage.gestiondestock_backend.bean.CommandeClientUpdate;
 import com.stage.gestiondestock_backend.dto.CommandeClientDto;
 import com.stage.gestiondestock_backend.controller.api.CommandeClientApi;
 import com.stage.gestiondestock_backend.service.CommandeClientService;
+import com.stage.gestiondestock_backend.service.criteria.CommandeClientCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ public class CommandeClientController implements CommandeClientApi {
 
     @Override
     public ResponseEntity<CommandeClientDto> findById(Long id) {
+        System.out.println("\nid: "+id+"\n");
         return  ResponseEntity.ok(commandeClientService.findById(id));
     }
 
@@ -36,6 +38,11 @@ public class CommandeClientController implements CommandeClientApi {
     @Override
     public ResponseEntity<List<CommandeClientDto>> findAll() {
         return  ResponseEntity.ok(commandeClientService.findAll());
+    }
+
+    @Override
+    public List<CommandeClientDto> listingCommmandeClient(CommandeClientCriteria commandeClientCriteria) {
+        return commandeClientService.findCommandeClientListByFilter(commandeClientCriteria);
     }
 
     @Override

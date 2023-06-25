@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface LigneCommandeClientRepository extends JpaRepository<LigneCommandeClient, Long>, JpaSpecificationExecutor<LigneCommandeClient> {
     Optional<LigneCommandeClient> findLigneCommandeClientByCode(String code);
+
+    void deleteAllByCommandeClientId(Long id);
 }

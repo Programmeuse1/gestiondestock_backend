@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -60,6 +62,32 @@ public class LigneCommandeClientDto {
         ligneCommandeClient.setObservation(dto.getObservation());
         return ligneCommandeClient;
 
+    }
+
+    public static List<LigneCommandeClientDto> fromEntities(List<LigneCommandeClient> entities){
+        if (entities == null){
+            return null;
+        }
+
+        List<LigneCommandeClientDto> list = new ArrayList<>(entities.size());
+        for (LigneCommandeClient ligneCommandeClient : entities){
+            list.add(fromEntity(ligneCommandeClient));
+        }
+
+        return list;
+    }
+
+    public static List<LigneCommandeClient> toEntities(List<LigneCommandeClientDto> entities){
+        if (entities == null){
+            return null;
+        }
+
+        List<LigneCommandeClient> list = new ArrayList<>(entities.size());
+        for (LigneCommandeClientDto ligneCommandeClientDto : entities){
+            list.add(toEntity(ligneCommandeClientDto));
+        }
+
+        return list;
     }
 
     @Override
