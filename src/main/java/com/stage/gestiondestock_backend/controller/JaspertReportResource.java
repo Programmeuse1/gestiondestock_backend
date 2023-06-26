@@ -16,8 +16,8 @@ public class JaspertReportResource implements JaspertReportApi {
     private final JasperService jasperService;
 
     @Override
-    public ReportingPrinter printFactureClient(String codeUser) throws SQLException, JRException {
-        return jasperService.printerCommandeClient(codeUser);
+    public ReportingPrinter printFactureClient(String codeCommande) throws SQLException, JRException {
+        return jasperService.printerCommandeClient(codeCommande);
     }
 
 

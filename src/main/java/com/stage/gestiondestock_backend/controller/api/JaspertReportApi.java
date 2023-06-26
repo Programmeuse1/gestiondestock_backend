@@ -23,7 +23,7 @@ public interface JaspertReportApi {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Appro printer information returned successfully")
     })
-    @GetMapping(value = APP_ROOT +"/jaspertReport/printCommandeClient/{codeUser}", produces = MediaType.APPLICATION_JSON_VALUE)
-    ReportingPrinter printFactureClient(@PathVariable("codeUser") String codeUser) throws SQLException, JRException;
+    @GetMapping(value = APP_ROOT +"/jaspertReport/printCommandeClient/{codeCommande}", produces = MediaType.APPLICATION_JSON_VALUE)
+    ReportingPrinter printFactureClient(@PathVariable("codeCommande") String codeUser) throws SQLException, JRException;
 
 }

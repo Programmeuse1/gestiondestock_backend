@@ -34,36 +34,26 @@ public class JasperServiceImpl implements JasperService {
     private static final String FOLDERJASPER = "jasperReports/";
     private static final String POWERED = "Powered by SKYSOFT - Tel : 676 48 02 43";
     private static final String POWEREDBY = "powered";
-    private static final String FILECOMMANDECLIENT = "commandeclient.jasper";
+    private static final String FILECOMMANDECLIENT = "facture_commande_client.jasper";
 
     private void addInfo(Map<String, Object> parameters) {
         parameters.clear();
         String chemin = applicationProperties.getResources().getLocationPdfFile();
         parameters.put("Path", chemin + "/");
-        /*parameters.put("logo1", Objects.requireNonNull(getClass().getClassLoader().getResource("images/logo_1.jpeg")).toString());
-        parameters.put("logo2", Objects.requireNonNull(getClass().getClassLoader().getResource("images/logo_2.jpeg")).toString());*/
     }
 
     @Override
-    public ReportingPrinter printerCommandeClient(String codeUser) throws SQLException, JRException {
-
-        System.out.println("\n\ncodeUser: "+codeUser+"\n");
+    public ReportingPrinter printerCommandeClient(String codeCommande) throws SQLException, JRException {
 
         ReportingPrinter r = new ReportingPrinter();
         addInfo(parameters);
         con = getConnection();
 
-        parameters.put("codeUser", codeUser);
-//        setParameterpowered();
+        parameters.put("codeCommande", codeCommande);
+        setParameterpowered();
         InputStream path = getFileInputStream(FILECOMMANDECLIENT);
         String fileName = "facture_client_" + MethodUtils.getPrefixDocumentByDate() + ".pdf";
 
-        /*Optional<CommandeClient> commandeClient = commandeClientRepository.findById(idCommande.longValue());
-        if (commandeClient.isPresent()){
-            *//*parameters.put("codeUser", commandeClient.get().getId());
-            setParameterpowered();*//*
-        }*/
-//        ReportingPrinter rep = getPrinter(r, fileName, path);
         return getPrinter(r, fileName, path);
 
     }
