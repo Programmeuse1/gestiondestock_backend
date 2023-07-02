@@ -19,6 +19,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +28,7 @@ public class SecurityConfiguration {
     private final String[] permittedUrls = {
             "/gestiondestock_backend/v1/auth/authenticate",
             "/api/hello",
+            "/uploads_gestiondestock_backend/**",
             "/v2/api-docs",
             "/swagger-resources",
             "/swagger-resources/",
@@ -85,7 +87,7 @@ public class SecurityConfiguration {
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         // Don't do this in production, use a proper list  of allowed origins
-        config.setAllowedOriginPatterns(Collections.singletonList("*"));
+        config.setAllowedOriginPatterns(List.of("*", "http://localhost:8081/"));
         config.setAllowedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "OPTIONS", "DELETE", "PATCH"));
         source.registerCorsConfiguration("/**", config);

@@ -39,7 +39,7 @@ public class CommandeClient extends AbstractEntity{
     @JoinColumn(name ="idclient")
     private Client client;
 
-    @OneToMany(mappedBy ="commandeClient")
+    @OneToMany(mappedBy ="commandeClient", fetch = FetchType.EAGER)
     private List<LigneCommandeClient> ligneCommandeClients;
 
     @Column(name = "date_enregistrement")

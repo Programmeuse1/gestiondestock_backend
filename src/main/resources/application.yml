@@ -12,3 +12,12 @@ spring:
 
 server:
   port: 8081
+application:
+  upload:
+    resources-server-store: C:/Users/RODRIGUE/Documents/Ornella_Stage/impression/
+
+    resources-server-store-url: http://localhost:8081/uploads_gestiondestock_backend/
+
+  resources:
+    location-pdf-file: src/main/resources/jasperReports/
+#    location-excel-file: src/main/resources/excels/

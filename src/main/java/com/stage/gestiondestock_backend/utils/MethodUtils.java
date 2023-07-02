@@ -1,11 +1,14 @@
 package com.stage.gestiondestock_backend.utils;
 
 import com.google.common.base.Strings;
+import org.apache.commons.lang.RandomStringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class MethodUtils {
 
@@ -44,5 +47,20 @@ public class MethodUtils {
             fixe = new StringBuilder(v);
         }
         return fixe.toString();
+    }
+
+    public static String getPrefixDocumentByDate() {
+        LocalDate today = LocalDate.now();
+        Calendar c = Calendar.getInstance();
+        String p = (today.getYear() + "").substring(2);
+        p += format(today.getMonthValue(), 2);
+        p += format(today.getDayOfMonth(), 2);
+        p += "_";
+        p += format(c.get(Calendar.HOUR_OF_DAY), 2);
+        p += format(c.get(Calendar.MINUTE), 2);
+        p += format(c.get(Calendar.SECOND), 2);
+        p += "_";
+        p += RandomStringUtils.randomNumeric(6);
+        return p;
     }
 }

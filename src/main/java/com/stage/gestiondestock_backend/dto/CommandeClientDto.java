@@ -21,6 +21,8 @@ public class CommandeClientDto {
 
     private String code;
 
+    private boolean actif;
+
     private LocalDateTime dateEnregistrement;
 
     private Instant dateCommande;
@@ -42,10 +44,12 @@ public class CommandeClientDto {
                 .id(commandeClient.getId())
                 .dateEnregistrement(commandeClient.getDateEnregistrement())
                 .etatCommande(commandeClient.getEtatCommande())
+                .actif(commandeClient.isActif())
                 .code(commandeClient.getCode())
                 .dateCommande(commandeClient.getDateCommande())
                 .idEntreprise(commandeClient.getIdEntreprise())
                 .observation(commandeClient.getObservation())
+                .ligneCommandeClients(LigneCommandeClientDto.fromEntities(commandeClient.getLigneCommandeClients()))
                 .client(ClientDto.fromEntity(commandeClient.getClient()))
                 .build();
     }
@@ -58,9 +62,12 @@ public class CommandeClientDto {
         commandeClient.setId(dto.getId());
         commandeClient.setDateEnregistrement(dto.getDateEnregistrement());
         commandeClient.setEtatCommande(dto.getEtatCommande());
+        commandeClient.setActif(dto.isActif());
         commandeClient.setCode(dto.getCode());
         commandeClient.setDateCommande(dto.getDateCommande());
         commandeClient.setObservation(dto.getObservation());
+        commandeClient.setLigneCommandeClients(LigneCommandeClientDto.toEntities(dto.getLigneCommandeClients()));
+        commandeClient.setClient(ClientDto.toEntity(dto.getClient()));
         return commandeClient;
     }
 
@@ -69,6 +76,7 @@ public class CommandeClientDto {
         return "CommandeClientDto{" +
                 "id=" + id +
                 ", etatCommande=" + etatCommande +
+                ", actif=" + actif +
                 ", code='" + code + '\'' +
                 ", dateEnregistrement=" + dateEnregistrement +
                 ", dateCommande=" + dateCommande +
