@@ -1,7 +1,7 @@
 package com.stage.gestiondestock_backend.utils;
 
 import com.google.common.base.Strings;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
