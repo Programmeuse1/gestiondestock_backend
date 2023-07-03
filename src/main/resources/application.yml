@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3307/gestiondestock_Backend?createDatabaseIfNotExist=true&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/gestiondestock_Backend?createDatabaseIfNotExist=true&useSSL=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
-    password: Skysoft2021
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
@@ -14,7 +14,7 @@ server:
   port: 8081
 application:
   upload:
-    resources-server-store: C:/Users/RODRIGUE/Documents/Ornella_Stage/impression/
+    resources-server-store: C:/Users/rodri/Documents/Ornella_Stage/impression/
 
     resources-server-store-url: http://localhost:8081/uploads_gestiondestock_backend/
 
